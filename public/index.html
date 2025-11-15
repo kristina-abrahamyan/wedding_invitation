@@ -587,6 +587,11 @@
 <section class="date-section">
   <p class="date-intro">A moment we're excited to share</p>
   <h2 class="date-main">JUNE 20, 2026</h2>
+  <div style="margin-top: 20px;">
+    <button class="calendar-button" style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
+      Save to Calendar
+    </button>
+  </div>
   <p class="date-message">We look forward to celebrating with you</p>
 </section>
 
@@ -599,8 +604,8 @@
   <a href="https://www.google.com/maps/place/Avalon+Hall+%26+Restaurant/@40.2527934,44.6501318,17z/data=!3m1!4b1!4m9!3m8!1s0x406aa10a45863d83:0xbc7a58c42f2e2126!5m2!4m1!1i2!8m2!3d40.2527934!4d44.6501318!16s%2Fg%2F11b6d2ng59!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D" class="location-button">SHOW ON GOOGLE MAPS</a>
   <div class="location-details" style="margin-top: 60px;">
     <p>Instagram</p>
+    <a href="https://www.instagram.com/avalon_hall_restaurant?igsh=MzZqeGdkNGxxbjF3" class="location-button" style="margin-top: 5px;">INSTAGRAM</a>
   </div>
-  <a href="https://www.instagram.com/avalon_hall_restaurant?igsh=MzZqeGdkNGxxbjF3" class="location-button">INSTAGRAM</a>
 </section>
 
 <section class="program-section">
@@ -625,9 +630,15 @@
     <div class="program-time">21:00</div>
     <div class="program-description">CAKE</div>
   </div>
-  <div class="program-item">
-    <div class="program-time">23:00</div>
-    <div class="program-description">FINALE</div>
+</section>
+
+<section class="dresscode-section">
+  <h2 class="dresscode-title">COLOUR PALETTE</h2>
+  <p class="dresscode-text">You are welcome to wear whatever you like! The color palette of our wedding is as follows:</p>
+  <div class="color-samples">
+    <div class="color-sample" style="background: #B8E3B8;"></div>
+    <div class="color-sample" style="background: #ffffff;"></div>
+    <div class="color-sample" style="background: #FFE5B4;"></div>
   </div>
 </section>
 
@@ -640,18 +651,8 @@
       <img src="images/white.jpeg" alt="Gallery 2">
     </div>
     <div class="gallery-item">
-      <img src="images/light_orange" alt="Gallery 3">
+      <img src="images/light_orange.jpg" alt="Gallery 3">
     </div>
-  </div>
-</section>
-
-<section class="dresscode-section">
-  <h2 class="dresscode-title">DRESS CODE</h2>
-  <p class="dresscode-text">You are welcome to wear whatever you like! The color palette of our wedding is as follows:</p>
-  <div class="color-samples">
-    <div class="color-sample" style="background: #90EE90;"></div> <!-- Light green -->
-    <div class="color-sample" style="background: #ffffff;"></div> <!-- White -->
-    <div class="color-sample" style="background: #FFE5B4;"></div> <!-- Very light orange -->
   </div>
 </section>
 
@@ -662,7 +663,7 @@
     <form id="rsvpForm">
       <div class="form-group">
         <label class="form-label">Your Name and Surname</label>
-        <input type="text" class="form-input" placeholder="Ivan Ivanov" required>
+        <input type="text" class="form-input" placeholder="e.g. Bob Smith" required>
       </div>
       <div class="form-group">
         <label class="form-label">Will you be able to attend?</label>
@@ -673,32 +674,18 @@
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">Who will you be with at the event?</label>
-        <input type="text" class="form-input" required>
+        <label class="form-label">Do you have any allergies? If yes, please, specify</label>
+        <input type="text" class="form-input" placeholder="e.g. nuts, gluten" required>
       </div>
       <div class="form-group">
-        <label class="form-label">What do you prefer from alcohol?</label>
-        <select class="form-select" required>
-          <option value="">Select</option>
-          <option value="vodka">Vodka</option>
-          <option value="champagne">Champagne</option>
-          <option value="white-wine">White Wine</option>
-          <option value="red-wine">Red Wine</option>
-        </select>
+        <label class="form-label">What's your estimated arrival/departure dates, if known?</label>
+        <input type="text" class="form-input" placeholder="e.g. 19 June, 22 June" required>
       </div>
       <button type="submit" class="form-button">SEND</button>
     </form>
   </div>
 </section>
 
-<section class="contact-section">
-  <h2 class="contact-title">CONTACTS</h2>
-  <p class="date-message">For organisational questions on the day of the celebration, you can contact Samvel</p>
-  <div class="contact-icons">
-    <a href="tel:+79139153691" class="contact-icon">📞</a>
-    <a href="abraamyans@gmail.com" class="contact-icon">💬</a>
-  </div>
-</section>
 
 <script>
   window.addEventListener('load', () => {

@@ -1,16 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-
-// Native webview packages
+import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:webview_flutter_web/webview_flutter_web.dart';
+import 'dart:html' as html; // Only for Web
 
 void main() {
-  if (kIsWeb) {
-    // Register web implementation (iframe)
-    WebViewPlatform.instance = WebWebViewPlatform();
-  }
-
   runApp(const MyApp());
 }
 
@@ -21,37 +14,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'HTML App',
       home: const HtmlPage(),
     );
   }
 }
 
-class HtmlPage extends StatefulWidget {
+class HtmlPage extends StatelessWidget {
   const HtmlPage({super.key});
 
   @override
-  State<HtmlPage> createState() => _HtmlPageState();
-}
-
-class _HtmlPageState extends State<HtmlPage> {
-  late final WebViewController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadFlutterAsset('assets/index.html');
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: kIsWeb
-          ? const HtmlElementView(viewType: 'webview')
-          : WebViewWidget(controller: _controller),
-    );
+    if (kIsWeb) {
+      // On Web: open the HTML in a new browser tab
+      html.window.open('public/index.html', '_blank');
+      return Scaffold(
+        body: Center(
+          child: Text(
+            'Your wedding invitation opened in a new tab!',
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    } else {
+      // On Mobile: use WebView
+      final controller = WebViewController()
+        ..loadFlutterAsset('public/index.html');
+
+      return Scaffold(
+        body: WebViewWidget(controller: controller),
+      );
+    }
   }
 }

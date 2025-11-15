@@ -51,7 +51,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/index.html
+    - public/index.html
+    - public/images/
 
   uses-material-design: true
 
