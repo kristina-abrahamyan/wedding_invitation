@@ -560,6 +560,12 @@
             width: 200px;
             height: 250px;
         }
+        .form-sublabel {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: inherit;
+          }
     }
   </style>
 </head>
@@ -678,16 +684,19 @@
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">Do you have any allergies? If yes, please specify</label>
+        <label class="form-label">Do you have any allergies or dietary requirements? If yes, please specify</label>
         <input type="text" class="form-input" placeholder="e.g. nuts, gluten" required>
       </div>
       <div class="form-group">
-        <label class="form-label">For our international visitors, what's your estimated arrival date, if known?</label>
-        <input type="text" class="form-input" placeholder="e.g. 19 June" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">For our international visitors, what's your estimated departure date, if known?</label>
-        <input type="text" class="form-input" placeholder="e.g., 22 June" required>
+        <label class="form-label">For our international visitors, what's your estimated:</label>
+        <div style="margin-top: 12px;">
+          <label class="form-sublabel">Arrival date</label>
+          <input type="text" class="form-input" placeholder="e.g. 19 June" style="margin-bottom: 16px;">
+        </div>
+        <div>
+          <label class="form-sublabel">Departure date</label>
+          <input type="text" class="form-input" placeholder="e.g. 22 June">
+        </div>
       </div>
       <button type="submit" class="form-button">SUBMIT</button>
     </form>
