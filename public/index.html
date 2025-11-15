@@ -543,7 +543,10 @@
     }
 
     @media (max-width: 768px) {
-        .hero-title { font-size: 34px; }
+        .hero-title {
+            font-size: 34px;
+            line-height: 1.2;
+        }
         .hero-subtitle { font-size: 18px; }
         .hero-date { font-size: 46px; }
         .location-title, .program-title, .dresscode-title, .rsvp-title, .contact-title {
@@ -566,8 +569,13 @@
             margin-bottom: 8px;
             color: inherit;
           }
-         .scroll-hint {
+        .scroll-hint {
             bottom: 60px;
+        }
+        .mobile-break::before,
+        .mobile-break::after {
+            content: '\A';
+            white-space: pre;
         }
     }
   </style>
