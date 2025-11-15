@@ -588,7 +588,7 @@
   <p class="date-intro">A moment we're excited to share</p>
   <h2 class="date-main">JUNE 20, 2026</h2>
   <div style="margin-top: 20px;">
-    <button class="calendar-button" style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
+    <button class="calendar-button" id="calendarBtn" style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
       Save to Calendar
     </button>
   </div>
@@ -751,38 +751,18 @@
       });
   });
 
-  document.querySelector('.calendar-button').addEventListener('click', () => {
-    const icsContent = `BEGIN:VCALENDAR
-  VERSION:2.0
-  PRODID:-//Wedding Invitation//EN
-  BEGIN:VEVENT
-  UID:${Date.now()}@wedding.com
-  DTSTAMP:${formatDateICS(new Date())}
-  DTSTART:${formatDateICS(new Date('2026-06-20T16:00:00'))}
-  DTEND:${formatDateICS(new Date('2026-06-20T20:00:00'))}
-  SUMMARY:Jordan & Kristina Wedding
-  DESCRIPTION:Join us to celebrate our wedding!
-  LOCATION:Avalon Wedding Hall & Restaurant, 1 Ankaxutyan Street, Aramus 2201, Armenia
-  END:VEVENT
-  END:VCALENDAR`;
+  document.getElementById('calendarBtn').addEventListener('click', () => {
+    const title = encodeURIComponent('Jordan & Kristina Wedding');
+    const details = encodeURIComponent('Join us to celebrate our wedding!');
+    const location = encodeURIComponent('Avalon Wedding Hall & Restaurant, 1 Ankaxutyan Street, Aramus 2201, Armenia');
+    const start = '20260620T160000Z'; // YYYYMMDDTHHMMSSZ UTC
+    const end = '20260620T200000Z';
 
-      const blob = new Blob([icsContent], { type: 'text/calendar' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'Jordan_Kristina_Wedding.ics';
-      link.click();
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}&sf=true&output=xml`;
+
+    window.open(googleCalendarUrl, '_blank');
   });
 
-  // Helper to format date as YYYYMMDDTHHMMSSZ
-  function formatDateICS(date) {
-      const pad = num => num.toString().padStart(2, '0');
-      return date.getUTCFullYear() +
-             pad(date.getUTCMonth() + 1) +
-             pad(date.getUTCDate()) + 'T' +
-             pad(date.getUTCHours()) +
-             pad(date.getUTCMinutes()) +
-             pad(date.getUTCSeconds()) + 'Z';
-  }
 
 </script>
 </body>
