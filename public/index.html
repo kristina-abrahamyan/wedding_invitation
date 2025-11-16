@@ -600,6 +600,17 @@
             display: block;
         }
     }
+    .rsvp-container iframe {
+            width: 100%;
+            height: 700px; /* adjust as needed */
+            border: none;
+    }
+    @media (max-width: 768px) {
+        .rsvp-container iframe {
+            height: 900px;
+        }
+    }
+
   </style>
 </head>
 <body class="no-scroll">
@@ -707,38 +718,12 @@
   <div class="rsvp-container">
     <h2 class="rsvp-title">RSVP</h2>
     <p class="rsvp-description">Please confirm your attendance by 15 April, 2026</p>
-    <form id="rsvpForm">
-      <div class="form-group">
-        <label class="form-label">Full name</label>
-        <input type="text" class="form-input" placeholder="e.g. Bob Smith" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Will you be able to attend?</label>
-        <select class="form-select" required>
-          <option value="">Select</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Do you have any allergies or dietary requirements? If yes, please specify</label>
-        <input type="text" class="form-input" placeholder="e.g. nuts, gluten" required>
-      </div>
-      <div class="form-group" style="margin-top: 60px;">
-        <label class="form-label">For our international visitors, what's your estimated:</label>
-        <div style="margin-top: 12px;">
-          <label class="form-sublabel">Arrival date</label>
-          <input type="text" class="form-input" placeholder="e.g. 19 June" style="margin-bottom: 16px;">
-        </div>
-        <div>
-          <label class="form-sublabel">Departure date</label>
-          <input type="text" class="form-input" placeholder="e.g. 22 June">
-        </div>
-      </div>
-      <button type="submit" class="form-button">SUBMIT</button>
-    </form>
+
+    <!-- Google Form Embed -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScf_V_TBKGgichU_tgSn2gjGURu2y6jk5Dh3NV5cImNDKDqwA/viewform?embedded=true" width="640" height="1090" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </div>
 </section>
+
 
 
 <script>
