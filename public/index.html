@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jordan & Kristina - Wedding Day</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <style>
-    * {
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;700&display=swap" rel="stylesheet">    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -103,11 +102,12 @@
         top: 19%;
         left: 50%;
         transform: translateX(-50%);
-        font-family: 'Great Vibes', cursive;
-        font-size: 40px;
+        font-family: 'Lora', serif;
+        font-size: 42px;
         font-weight: 400;
         color: #fff;
         z-index: 10;
+        letter-spacing: 4px;
     }
 
     .hero-image-container {
@@ -639,24 +639,32 @@
 
     @media (max-width: 768px) {
         .hero-invitation-text {
-            font-size: 18px;
-            letter-spacing: 2px;
-            top: 12%;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            top: 15%;  /* Changed from 8% - moved lower */
+            white-space: nowrap;
         }
 
         .hero-initials {
-            font-size: 35px;
-            top: 17%;
+            font-size: 36px;  /* Made smaller */
+            top: 20%;  /* Moved higher */
+            letter-spacing: 3px;
         }
+
         .hero-image-container {
-            width: 200px;
-            height: 253px;
+            width: 180px;  /* Made smaller */
+            height: 228px;  /* Proportional to width */
+            top: 45%;  /* Adjusted center position */
         }
         .hero-click-text {
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 1px;
-            bottom: 22%;
+            bottom: 31%;  /* Higher number moves text up 34 is a bit high */
+            padding: 0 20px;  /* Add padding to prevent text from touching edges */
+            max-width: 90%;  /* Prevent text from being too wide */
+            white-space: nowrap;
         }
+
         .hero-title {
             font-size: 34px;
             gap: 6px;
@@ -717,7 +725,7 @@
 <section class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-invitation-text">Wedding Invitation</div>
-  <div class="hero-initials">J | K</div>
+  <div class="hero-initials">J & K</div>
   <div class="hero-image-container" id="heroImage">
     <img src="images/1.jpg" alt="Wedding" class="hero-image">
   </div>
