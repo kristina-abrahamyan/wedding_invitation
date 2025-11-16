@@ -611,6 +611,7 @@
         }
     }
 
+
   </style>
 </head>
 <body class="no-scroll">
@@ -642,9 +643,15 @@
   <p class="date-intro">A moment we're excited to share</p>
   <h2 class="date-main">JUNE 20, 2026</h2>
   <div style="margin-top: 20px;">
-    <button class="calendar-button" id="calendarBtn" style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
-      Save to Calendar
+    <button class="calendar-button" id="googleCalendarBtn"
+            style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
+      Save to Google Calendar
     </button>
+    <button class="calendar-button" id="icsCalendarBtn"
+            style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
+      Save to iPhone Calendar
+    </button>
+
   </div>
   <p class="date-message">We look forward to celebrating with you</p>
 </section>
@@ -655,10 +662,10 @@
     <p>Avalon Wedding Hall & Restaurant</p>
     <p>1 Ankaxutyan Street, Aramus 2201, Armenia</p>
   </div>
-  <a href="https://www.google.com/maps/place/Avalon+Hall+%26+Restaurant/@40.2527934,44.6501318,17z/data=!3m1!4b1!4m9!3m8!1s0x406aa10a45863d83:0xbc7a58c42f2e2126!5m2!4m1!1i2!8m2!3d40.2527934!4d44.6501318!16s%2Fg%2F11b6d2ng59!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D" class="location-button">SHOW ON GOOGLE MAPS</a>
+  <a href="https://www.google.com/maps/place/Avalon+Hall+%26+Restaurant/@40.2527934,44.6501318,17z/data=!3m1!4b1!4m9!3m8!1s0x406aa10a45863d83:0xbc7a58c42f2e2126!5m2!4m1!1i2!8m2!3d40.2527934!4d44.6501318!16s%2Fg%2F11b6d2ng59!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D" class="location-button">Show on Google Maps</a>
   <div class="location-details" style="margin-top: 60px;">
     <p>Instagram</p>
-    <a href="https://www.instagram.com/avalon_hall_restaurant?igsh=MzZqeGdkNGxxbjF3" class="location-button" style="margin-top: 5px;">INSTAGRAM</a>
+    <a href="https://www.instagram.com/avalon_hall_restaurant?igsh=MzZqeGdkNGxxbjF3" class="location-button" style="margin-top: 5px;">Instagram</a>
   </div>
 </section>
 
@@ -727,78 +734,108 @@
 
 
 <script>
-  window.addEventListener('load', () => {
-      setTimeout(() => {
-          const preloader = document.getElementById('preloader');
-          preloader.style.opacity = '0';
-          setTimeout(() => preloader.remove(), 1000);
-      }, 2000);
-  });
+  /* ---------------------------
+   GOOGLE CALENDAR BUTTON
+---------------------------- */
+const googleBtn = document.getElementById('googleCalendarBtn');
+if (googleBtn) {
+    googleBtn.addEventListener('click', () => {
+        const title = encodeURIComponent('Jordan & Kristina Wedding');
+        const details = encodeURIComponent('Join us to celebrate our wedding!');
+        const location = encodeURIComponent('Avalon Hall & Restaurant, Armenia');
+        const start = '20260620T143000Z';
+        const end = '20260620T220000Z';
 
-  const heroImage = document.getElementById('heroImage');
-  const heroContent = document.getElementById('heroContent');
-  const scrollHint = document.getElementById('scrollHint');
-  const hero = document.querySelector('.hero');
-  const body = document.body;
+        const googleUrl =
+            `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}` +
+            `&dates=${start}/${end}&details=${details}&location=${location}`;
 
-  heroImage.addEventListener('click', () => {
-      heroImage.classList.add('opened');
-      hero.classList.add('bg-visible');
+        window.open(googleUrl, '_blank');
+    });
+}
 
-      setTimeout(() => {
-          heroImage.style.display = 'none';
-          heroContent.style.display = 'block';
-          scrollHint.style.display = 'block';
-          body.classList.remove('no-scroll');
-      }, 1600);
-  });
+/* ---------------------------
+   ICS DOWNLOAD BUTTON
+---------------------------- */
+const icsBtn = document.getElementById('icsCalendarBtn');
+if (icsBtn) {
+    icsBtn.addEventListener('click', () => {
+        const icsContent =
+            `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\n` +
+            `DTSTART:20260620T143000Z\n` +
+            `DTEND:20260620T220000Z\n` +
+            `SUMMARY:Jordan & Kristina Wedding\n` +
+            `DESCRIPTION:Join us to celebrate our wedding!\n` +
+            `LOCATION:Avalon Hall & Restaurant, Armenia\n` +
+            `END:VEVENT\nEND:VCALENDAR`;
 
-  const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -100px 0px'
-  };
+        const blob = new Blob([icsContent], { type: 'text/calendar' });
+        const url = URL.createObjectURL(blob);
 
-  const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-          }
-      });
-  }, observerOptions);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'wedding-event.ics';
+        a.click();
 
-  document.querySelectorAll('.program-item, .date-section, .location-section, .gallery-section, .dresscode-section, .rsvp-section, .contact-section').forEach(item => {
-      observer.observe(item);
-  });
+        URL.revokeObjectURL(url);
+    });
+}
 
-  document.getElementById('rsvpForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you for your response! We will contact you soon.');
-      e.target.reset();
-  });
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.remove(), 1000);
+    }, 2000);
+});
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-              target.scrollIntoView({ behavior: 'smooth' });
-          }
-      });
-  });
+const heroImage = document.getElementById('heroImage');
+const heroContent = document.getElementById('heroContent');
+const scrollHint = document.getElementById('scrollHint');
+const hero = document.querySelector('.hero');
+const body = document.body;
 
-  document.getElementById('calendarBtn').addEventListener('click', () => {
-    const title = encodeURIComponent('Jordan & Kristina Wedding');
-    const details = encodeURIComponent('Join us to celebrate our wedding!');
-    const location = encodeURIComponent('https://www.google.com/maps/place/Avalon+Hall+%26+Restaurant/@40.2527934,44.6501318,17z/data=!3m1!4b1!4m9!3m8!1s0x406aa10a45863d83:0xbc7a58c42f2e2126!5m2!4m1!1i2!8m2!3d40.2527934!4d44.6501318!16s%2Fg%2F11b6d2ng59!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D');
-    const start = '20260620T143000Z'; // YYYYMMDDTHHMMSSZ UTC
-    const end = '20260620T220000Z';
+heroImage.addEventListener('click', () => {
+    heroImage.classList.add('opened');
+    hero.classList.add('bg-visible');
 
-    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}&sf=true&output=xml`;
+    setTimeout(() => {
+        heroImage.style.display = 'none';
+        heroContent.style.display = 'block';
+        scrollHint.style.display = 'block';
+        body.classList.remove('no-scroll');
+    }, 1600);
+});
 
-    window.open(googleCalendarUrl, '_blank');
-  });
+const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+};
 
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
 
+document.querySelectorAll('.program-item, .date-section, .location-section, .gallery-section, .dresscode-section, .rsvp-section, .contact-section')
+    .forEach(item => observer.observe(item));
+
+document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for your response! We will contact you soon.');
+    e.target.reset();
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
 </script>
 </body>
 </html>
