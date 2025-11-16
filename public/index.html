@@ -520,10 +520,11 @@
         color: #2a2a2a;
     }
 
-
     .rsvp-section {
         padding: 80px 20px;
-        background: #ffffff;
+        background: #ffffff; /* change to white */
+        color: #2a2a2a;      /* dark text color */
+        text-align: center;
         opacity: 0;
         transform: translateY(30px);
         transition: opacity 0.6s ease, transform 0.6s ease;
@@ -532,15 +533,6 @@
     .rsvp-section.visible {
         opacity: 1;
         transform: translateY(0);
-    }
-
-    .rsvp-container {
-        max-width: 600px;
-        margin: 0 auto;
-        background: #fff;
-        padding: 60px 40px;
-        border-radius: 50px;
-        border: 1px solid #000;
     }
 
     .rsvp-title {
@@ -854,7 +846,17 @@
     <p class="rsvp-description">Please confirm your attendance by 15 April, 2026</p>
 
     <!-- Google Form Embed -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScf_V_TBKGgichU_tgSn2gjGURu2y6jk5Dh3NV5cImNDKDqwA/viewform?embedded=true" width="640" height="1090" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <iframe
+            src="https://tally.so/embed/EkkQOl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            width="100%"
+            height="700"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            scrolling="no"
+            title="RSVP">
+    </iframe>
+
   </div>
 </section>
 
