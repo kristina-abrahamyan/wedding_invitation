@@ -316,6 +316,10 @@
         font-weight: 700;
         margin: 20px 0;
         color: #2a2a2a;
+        font-family: 'Trebuchet MS', 'Lucida Sans', sans-serif;  /* More modern serif alternative */
+        letter-spacing: 2px;
+        word-spacing: 12px;
+        text-transform: uppercase;
     }
 
     .date-message {
@@ -714,6 +718,11 @@
         .mobile-break {
             display: block;
         }
+        .date-main {
+            font-size: 32px;
+            letter-spacing: 2px;
+            word-spacing: 2px;
+        }
     }
     .rsvp-container iframe {
             width: 100%;
@@ -759,8 +768,8 @@
 
 <section class="date-section">
   <p class="date-intro">A moment we're excited to share</p>
-  <h2 class="date-main">JUNE 20, 2026</h2>
-  <div style="margin-top: 20px;">
+  <h2 class="date-main">20 JUNE 2026</h2>
+  <div style="margin-top: 20px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
     <button class="calendar-button" id="googleCalendarBtn"
             style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
       Save to Google Calendar
@@ -769,7 +778,6 @@
             style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
       Save to iPhone Calendar
     </button>
-
   </div>
   <p class="date-message">We're looking forward to celebrating with you</p>
 </section>
@@ -862,8 +870,8 @@ if (googleBtn) {
         const title = encodeURIComponent('Jordan & Kristina Wedding');
         const details = encodeURIComponent('Join us to celebrate our wedding!');
         const location = encodeURIComponent('Avalon Hall & Restaurant, Armenia');
-        const start = '20260620T143000Z';
-        const end = '20260620T220000Z';
+        const start = '20260620';  // Changed - all day format (YYYYMMDD)
+        const end = '20260621';    // Changed - end date is next day for all-day events
 
         const googleUrl =
             `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}` +
@@ -881,8 +889,8 @@ if (icsBtn) {
     icsBtn.addEventListener('click', () => {
         const icsContent =
             `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\n` +
-            `DTSTART:20260620T143000Z\n` +
-            `DTEND:20260620T220000Z\n` +
+            `DTSTART;VALUE=DATE:20260620\n` +  // Changed - date-only format for all-day
+            `DTEND;VALUE=DATE:20260621\n` +    // Changed - next day for all-day events
             `SUMMARY:Jordan & Kristina Wedding\n` +
             `DESCRIPTION:Join us to celebrate our wedding!\n` +
             `LOCATION:Avalon Hall & Restaurant, Armenia\n` +
