@@ -852,68 +852,91 @@
   </div>
 </section>
 
+
+
 <section class="rsvp-section">
   <div class="rsvp-container">
     <h2 class="rsvp-title">RSVP</h2>
     <p class="rsvp-description">Please confirm your attendance by 1st April 2026</p>
 
-    <!-- Message behind iframe (hidden by default) -->
-    <div style="position: relative; margin-top: 20px;">
-      <div id="refreshMessage" style="
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-">
-        <div style="
-    display: inline-block;
-    padding: 20px 40px;
-    background: rgba(0,0,0,0.95);
-    color: #fff;
-    border-radius: 12px;
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: center;
-    pointer-events: auto;
-  ">
-          If you're submitting for multiple people,<br>
-          please refresh the page by clicking below:
-          <br><br>
-          <button id="refreshRSVPBtn" style="
-      background: #fff;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
+    <!-- Google Form Embed -->
+    <iframe
+            id="rsvpIframe"
+            src="https://tally.so/embed/EkkQOl?hideTitle=1&transparentBackground=1&dynamicHeight=1&event=1"
+            width="100%"
+            height="700"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            scrolling="no"
+            title="RSVP"
+            style="position: relative; z-index: 2; background: transparent;">
+    </iframe>
+
+    <!-- Floating/hidden resubmit message -->
+    <div id="refreshMessage" style="
+      position: absolute;
+      bottom: 20px;  /* original floating position */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      pointer-events: none;  /* container itself ignores clicks */
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      width: 90%;
     ">
-            Refresh & Return to RSVP
-          </button>
-        </div>
+      <div style="
+        display: inline-block;
+        padding: 16px 24px;
+        background: rgba(0,0,0,0.85);
+        color: #fff;
+        border-radius: 12px;
+        font-size: 16px;
+        line-height: 1.4;
+        text-align: center;
+        pointer-events: auto;  /* only the button is clickable */
+      ">
+        If you’re attending with others, please submit<br>
+        one RSVP per person. You can resubmit here:
+        <br><br>
+        <button id="refreshRSVPBtn" style="
+          background: #fff;
+          color: #000;
+          padding: 10px 20px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+        ">
+          Submit a new RSVP
+        </button>
       </div>
-
-
-      <!-- Google Form Embed -->
-      <iframe
-              id="rsvpIframe"
-              src="https://tally.so/embed/EkkQOl?hideTitle=1&transparentBackground=1&dynamicHeight=1&event=1"
-              width="100%"
-              height="700"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              scrolling="no"
-              title="RSVP"
-              style="position: relative; z-index: 2; background: transparent;">
-      </iframe>
     </div>
+
   </div>
 </section>
+
+<style>
+  /* Keep original floating style, slightly lower on mobile */
+  @media (max-width: 768px) {
+    #refreshMessage {
+      bottom: 40px;
+    }
+  }
+</style>
+
+
+
+
+<style>
+  /* Optional: move the button lower on mobile */
+  @media (max-width: 768px) {
+    #refreshMessage {
+      margin-top: 40px;
+    }
+  }
+</style>
+
 
 
 
@@ -1037,12 +1060,13 @@ window.addEventListener('message', function(e) {
 // Grab the refresh button and iframe
 const refreshBtn = document.getElementById('refreshRSVPBtn');
 const rsvpIframe = document.getElementById('rsvpIframe');
-const rsvpSection = document.querySelector('.rsvp-section');
 const refreshMessage = document.getElementById('refreshMessage');
 
-// Click handler for the refresh button
-refreshBtn.addEventListener('click', () => {
-    // Hide the refresh message/button immediately
+// Click handler for the resubmit button
+refreshBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent bubbling
+
+    // Hide the button
     if (refreshMessage) {
         refreshMessage.style.opacity = '0';
     }
@@ -1050,29 +1074,29 @@ refreshBtn.addEventListener('click', () => {
     // Reload the iframe to reset the form
     if (rsvpIframe) {
         const src = rsvpIframe.src;
-        rsvpIframe.src = ''; // force reload
+        rsvpIframe.src = ''; // Force reload
         setTimeout(() => {
             rsvpIframe.src = src;
         }, 50);
     }
-
-    // Scroll smoothly to the RSVP section
-    if (rsvpSection) {
-        rsvpSection.scrollIntoView({ behavior: 'smooth' });
-    }
 });
 
-// Listen for Tally form submission
+// Show the resubmit button after Tally form submission
 window.addEventListener('message', function(e) {
     if (typeof e?.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
-        console.log("Tally form submitted!");
-
-        // Show the refresh button/message again
         if (refreshMessage) {
             refreshMessage.style.opacity = '1';
+
+            // Optional: move it to the “floating” position
+            refreshMessage.style.position = 'absolute';
+            refreshMessage.style.bottom = '20px';
+            refreshMessage.style.left = '50%';
+            refreshMessage.style.transform = 'translateX(-50%)';
+            refreshMessage.style.zIndex = '9999';
         }
     }
 });
+
 
 
 </script>
