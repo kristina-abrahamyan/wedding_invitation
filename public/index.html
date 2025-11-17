@@ -942,12 +942,11 @@
 <style>
   @media (max-width: 768px) {
     #refreshMessage {
-      position: relative !important;
+      position: relative !important;  /* Remove floating */
       bottom: auto !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-      margin-top: -50px;  /* Negative margin moves it up */
-      text-align: center;
+      left: auto !important;
+      transform: none !important;
+      margin-top: 30px;  /* Space after the form */
     }
   }
 </style>
