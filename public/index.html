@@ -942,7 +942,12 @@
 <style>
   @media (max-width: 768px) {
     #refreshMessage {
-      bottom: 200px;
+      position: relative !important;
+      bottom: auto !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      margin-top: -50px;  /* Negative margin moves it up */
+      text-align: center;
     }
   }
 </style>
@@ -989,6 +994,9 @@
         description: "Please confirm your attendance by 1st April 2026",
         resubmitText: "If you're attending with others, please submit<br>one RSVP per person. You can resubmit here:",
         resubmitButton: "Submit a new RSVP"
+      },
+      footer: {
+        text: "This invitation website was created by Kristina & Jordan ❤️"
       }
     },
     ru: {
@@ -1028,6 +1036,9 @@
         description: "Пожалуйста, подтвердите своё присутствие до 1 апреля 2026 года",
         resubmitText: "Если вы приходите с другими, пожалуйста, отправьте<br>одну анкету на человека. Вы можете отправить здесь:",
         resubmitButton: "Отправить новую анкету"
+      },
+      footer: {
+        text: "Этот сайт-приглашение создан Кристиной и Джорданом ❤️"
       }
     },
     hy: {
@@ -1067,6 +1078,9 @@
         description: "Խնդրում ենք հաստատել ձեր ներկայությունը մինչև 2026 թվականի ապրիլի 1-ը",
         resubmitText: "Եթե գալիս եք ուրիշների հետ, խնդրում ենք ներկայացնել<br>մեկ RSVP մեկ անձի համար։ Կարող եք կրկին ներկայացնել այստեղ:",
         resubmitButton: "Ներկայացնել նոր RSVP"
+      },
+      footer: {
+        text: "Այս հրավերի կայքը ստեղծվել է Քրիստինայի և Ջորդանի կողմից ❤️"
       }
     }
   };
@@ -1280,15 +1294,20 @@
 </script>
 
 <footer class="footer-section" style="
-    padding: 40px 20px;
+    padding: 60px 20px;
     text-align: center;
-    font-size: 16px;
-    color: #777;
-    background: #ffffff;
-    border-top: 1px solid #e5e5e5;
-    margin-top: 40px;
+    background: #f5f5f5;
+    border-top: 2px solid #2a2a2a;
+    margin-top: 60px;
 ">
-  This invitation website was created by Kristina & Jordan ❤️
+  <p style="
+    font-size: 18px;
+    color: #2a2a2a;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  " data-translate="footer.text">
+    This invitation website was created by Kristina & Jordan ❤️
+  </p>
 </footer>
 </body>
 </html>
