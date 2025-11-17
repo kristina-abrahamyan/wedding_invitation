@@ -85,6 +85,39 @@
     .hero.bg-visible::before {
         opacity: 0.7;
     }
+
+    .language-selector {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 15;
+        display: flex;
+        gap: 15px;
+    }
+
+    .lang-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.5);
+        color: #fff;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 14px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+    }
+
+    .lang-btn:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: #fff;
+    }
+
+    .lang-btn.active {
+        background: rgba(255,255,255,0.9);
+        color: #2a2a2a;
+        border-color: #fff;
+    }
+
     .hero-invitation-text {
         position: absolute;
         top: 13%;
@@ -169,7 +202,7 @@
     }
 
     .hero-image-container.opened {
-        position: absolute !important; /* Add position absolute when opened */
+        position: absolute !important;
         width: 100vw !important;
         height: 100vh !important;
         border: none !important;
@@ -193,17 +226,8 @@
         transform: scale(0);
     }
 
-    .hero-image-container.opened {
-        width: 100vw !important;
-        height: 100vh !important;
-        border: none !important;
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-    }
-
     .hero-title {
-        font-family: 'Great Vibes', cursive; /* elegant curly font */
+        font-family: 'Great Vibes', cursive;
         font-size: 64px;
         font-weight: 400;
         line-height: 1.2;
@@ -212,7 +236,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 10px; /* space between lines */
+        gap: 10px;
     }
 
     .hero-title span {
@@ -221,10 +245,9 @@
 
     .hero-title .amp {
         font-size: 50px;
-        font-weight: normal; /* bold ampersand */
+        font-weight: normal;
         color: #fff;
     }
-
 
     .hero-subtitle {
         font-size: 24px;
@@ -320,7 +343,7 @@
         font-weight: 700;
         margin: 20px 0;
         color: #2a2a2a;
-        font-family: 'Trebuchet MS', 'Lucida Sans', sans-serif;  /* More modern serif alternative */
+        font-family: 'Trebuchet MS', 'Lucida Sans', sans-serif;
         letter-spacing: 2px;
         word-spacing: 12px;
         text-transform: uppercase;
@@ -506,16 +529,6 @@
         border: 1px solid #fff;
     }
 
-    .dresscode-section {
-        padding: 80px 20px;
-        background: #000;
-        color: #fff;
-        text-align: center;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
     .colourpalette-title {
         text-align: center;
         font-size: 48px;
@@ -526,8 +539,8 @@
 
     .rsvp-section {
         padding: 80px 20px;
-        background: #ffffff; /* change to white */
-        color: #2a2a2a;      /* dark text color */
+        background: #ffffff;
+        color: #2a2a2a;
         text-align: center;
         opacity: 0;
         transform: translateY(30px);
@@ -637,29 +650,41 @@
         transform: scale(1.1);
         background: #000;
     }
+
     .mobile-break {
         display: none;
     }
 
     @media (max-width: 768px) {
+        .language-selector {
+            top: 10px;
+            right: 10px;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
         .hero-invitation-text {
             font-size: 16px;
             letter-spacing: 1.5px;
-            top: 15%;  /* Changed from 8% - moved lower */
+            top: 15%;
             white-space: nowrap;
         }
 
         .hero-initials {
-            font-size: 28px;  /* Made smaller */
-            top: 22%;  /* Moved higher */
+            font-size: 28px;
+            top: 22%;
             letter-spacing: 1px;
             white-space: nowrap;
         }
 
         .hero-image-container {
-            width: 180px;  /* Made smaller */
-            height: 228px;  /* Proportional to width */
-            top: 48%;  /* Adjusted center position */
+            width: 180px;
+            height: 228px;
+            top: 48%;
         }
 
         .mobile-break {
@@ -669,9 +694,9 @@
         .hero-click-text {
             font-size: 13px;
             letter-spacing: 0.5px;
-            bottom: 28%;  /* Higher number moves text up 34 is a bit high */
-            padding: 0 10px;  /* Add padding to prevent text from touching edges */
-            max-width: 80%;  /* Prevent text from being too wide */
+            bottom: 28%;
+            padding: 0 10px;
+            max-width: 80%;
             white-space: normal;
             line-height: 1.5;
             text-align: center;
@@ -722,7 +747,7 @@
     }
     .rsvp-container iframe {
             width: 100%;
-            height: 1200px; /* adjust as needed */
+            height: 1200px;
             border: none;
     }
     @media (max-width: 768px) {
@@ -730,7 +755,6 @@
             height: 1300px;
         }
     }
-
 
   </style>
 </head>
@@ -741,14 +765,22 @@
 
 <section class="hero">
   <div class="hero-overlay"></div>
-  <div class="hero-invitation-text">Wedding Invitation</div>
+
+  <!-- Language Selector -->
+  <div class="language-selector">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ru">RU</button>
+    <button class="lang-btn" data-lang="hy">HY</button>
+  </div>
+
+  <div class="hero-invitation-text" data-translate="hero.invitation">Wedding Invitation</div>
   <div class="hero-initials">Jordan & Kristina</div>
   <div class="hero-image-container" id="heroImage">
     <img src="images/1.jpg" alt="Wedding" class="hero-image">
   </div>
-  <div class="hero-click-text">Click on the picture<br class="mobile-break"> to open the invite</div>
+  <div class="hero-click-text" data-translate="hero.clickText">Click on the picture<br class="mobile-break"> to open the invite</div>
   <div class="hero-content" id="heroContent" style="display: none;">
-    <div class="hero-subtitle">WEDDING DAY</div>
+    <div class="hero-subtitle" data-translate="hero.subtitle">WEDDING DAY</div>
     <div class="hero-title">
       <span>Jordan</span>
       <span class="amp">&</span>
@@ -758,32 +790,32 @@
   </div>
   <div class="scroll-hint" id="scrollHint" style="display: none;">
     <div class="scroll-arrow"></div>
-    SCROLL DOWN
+    <span data-translate="hero.scrollDown">SCROLL DOWN</span>
   </div>
 </section>
 
 <section class="date-section">
-  <p class="date-intro">A moment we're excited to share</p>
+  <p class="date-intro" data-translate="date.intro">A moment we're excited to share</p>
   <h2 class="date-main">20 JUNE 2026</h2>
   <div style="margin-top: 20px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
     <button class="calendar-button" id="googleCalendarBtn"
-            style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
+            style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;" data-translate="date.googleCalendar">
       Save to Google Calendar
     </button>
     <button class="calendar-button" id="icsCalendarBtn"
-            style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;">
+            style="padding: 12px 24px; font-size: 16px; border-radius: 25px; border: 1px solid #2a2a2a; background: #fff; cursor: pointer;" data-translate="date.iphoneCalendar">
       Save to iPhone Calendar
     </button>
   </div>
-  <p class="date-message">We're looking forward to celebrating with you!</p>
+  <p class="date-message" data-translate="date.message">We're looking forward to celebrating with you!</p>
 </section>
 
 <section class="location-section">
-  <h2 class="location-title">LOCATION</h2>
+  <h2 class="location-title" data-translate="location.title">LOCATION</h2>
   <div class="location-details">
     <p>Avalon Wedding Hall & Restaurant</p>
     <p>1 Ankaxutyan Street, Aramus 2201, Armenia</p>
-    <a href="https://www.google.com/maps/place/Avalon+Hall+%26+Restaurant/@40.2527934,44.6501318,17z/data=!3m1!4b1!4m9!3m8!1s0x406aa10a45863d83:0xbc7a58c42f2e2126!5m2!4m1!1i2!8m2!3d40.2527934!4d44.6501318!16s%2Fg%2F11b6d2ng59!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D" class="location-button">Show on Google Maps</a>
+    <a href="https://www.google.com/maps/place/Avalon+Hall+%26+Restaurant/@40.2527934,44.6501318,17z/data=!3m1!4b1!4m9!3m8!1s0x406aa10a45863d83:0xbc7a58c42f2e2126!5m2!4m1!1i2!8m2!3d40.2527934!4d44.6501318!16s%2Fg%2F11b6d2ng59!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D" class="location-button" data-translate="location.maps">Show on Google Maps</a>
   </div>
   <div class="location-details" style="margin-top: 60px;">
     <p style="display: flex; align-items: center; justify-content: center; gap: 10px;">
@@ -797,48 +829,43 @@
 </section>
 
 <section class="program-section">
-  <h2 class="program-title">WEDDING PROGRAMME</h2>
+  <h2 class="program-title" data-translate="program.title">WEDDING PROGRAMME</h2>
   <div class="program-item">
     <div class="program-time">15:30</div>
-    <div class="program-description">GUEST ARRIVAL TIME</div>
+    <div class="program-description" data-translate="program.arrival">GUEST ARRIVAL TIME</div>
   </div>
   <div class="program-item">
     <div class="program-time">16:00</div>
-    <div class="program-description">CEREMONY</div>
+    <div class="program-description" data-translate="program.ceremony">CEREMONY</div>
   </div>
   <div class="program-item">
     <div class="program-time">16:30</div>
-    <div class="program-description">WELCOME</div>
+    <div class="program-description" data-translate="program.welcome">WELCOME</div>
   </div>
   <div class="program-item">
     <div class="program-time">18:00</div>
-    <div class="program-description">WEDDING DINNER</div>
+    <div class="program-description" data-translate="program.dinner">WEDDING DINNER</div>
   </div>
   <div class="program-item">
     <div class="program-time">21:00</div>
-    <div class="program-description">CAKE</div>
+    <div class="program-description" data-translate="program.cake">CAKE</div>
   </div>
   <div class="program-item">
     <div class="program-time">23:00</div>
-    <div class="program-description">FINALE</div>
+    <div class="program-description" data-translate="program.finale">FINALE</div>
   </div>
 </section>
 
 <section class="dresscode-section">
-  <h2 class="dresscode-title">DRESS CODE</h2>
-  <p class="dresscode-text">
+  <h2 class="dresscode-title" data-translate="dresscode.title">DRESS CODE</h2>
+  <p class="dresscode-text" data-translate="dresscode.text">
     We ask you to wear formal or semi-formal attire.
     While theme colours are welcome, feel free to wear any colours you love!
   </p>
-  <!--  <div class="color-samples">-->
-<!--    <div class="color-sample" style="background: #B8E3B8;"></div>-->
-<!--    <div class="color-sample" style="background: #ffffff;"></div>-->
-<!--    <div class="color-sample" style="background: #FFE5B4;"></div>-->
-<!--  </div>-->
 </section>
 
 <section class="gallery-section">
-  <h2 class="colourpalette-title">PRELIMINARY COLOUR PALETTE</h2>
+  <h2 class="colourpalette-title" data-translate="palette.title">PRELIMINARY COLOUR PALETTE</h2>
   <div class="gallery-grid">
     <div class="gallery-item">
       <img src="images/green.jpeg" alt="Gallery 1">
@@ -852,14 +879,11 @@
   </div>
 </section>
 
-
-
 <section class="rsvp-section">
   <div class="rsvp-container">
     <h2 class="rsvp-title">RSVP</h2>
-    <p class="rsvp-description">Please confirm your attendance by 1st April 2026</p>
+    <p class="rsvp-description" data-translate="rsvp.description">Please confirm your attendance by 1st April 2026</p>
 
-    <!-- Google Form Embed -->
     <iframe
             id="rsvpIframe"
             src="https://tally.so/embed/EkkQOl?hideTitle=1&transparentBackground=1&dynamicHeight=1&event=1"
@@ -873,14 +897,13 @@
             style="position: relative; z-index: 2; background: transparent;">
     </iframe>
 
-    <!-- Floating/hidden resubmit message -->
     <div id="refreshMessage" style="
       position: absolute;
-      bottom: 20px;  /* original floating position */
+      bottom: 200px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;
-      pointer-events: none;  /* container itself ignores clicks */
+      pointer-events: none;
       opacity: 0;
       transition: opacity 0.35s ease;
       width: 90%;
@@ -894,10 +917,10 @@
         font-size: 16px;
         line-height: 1.4;
         text-align: center;
-        pointer-events: auto;  /* only the button is clickable */
+        pointer-events: auto;
       ">
-        If you’re attending with others, please submit<br>
-        one RSVP per person. You can resubmit here:
+        <span data-translate="rsvp.resubmitText">If you're attending with others, please submit<br>
+        one RSVP per person. You can resubmit here:</span>
         <br><br>
         <button id="refreshRSVPBtn" style="
           background: #fff;
@@ -907,7 +930,7 @@
           border: none;
           cursor: pointer;
           font-size: 16px;
-        ">
+        " data-translate="rsvp.resubmitButton">
           Submit a new RSVP
         </button>
       </div>
@@ -917,189 +940,345 @@
 </section>
 
 <style>
-  /* Keep original floating style, slightly lower on mobile */
   @media (max-width: 768px) {
     #refreshMessage {
-      bottom: 40px;
+      bottom: 200px;
     }
   }
 </style>
-
-
-
-
-<style>
-  /* Optional: move the button lower on mobile */
-  @media (max-width: 768px) {
-    #refreshMessage {
-      margin-top: 40px;
-    }
-  }
-</style>
-
-
-
 
 <script>
-  /* ---------------------------
-   GOOGLE CALENDAR BUTTON
----------------------------- */
-const googleBtn = document.getElementById('googleCalendarBtn');
-if (googleBtn) {
-    googleBtn.addEventListener('click', () => {
-        const title = encodeURIComponent('Jordan & Kristina Wedding');
-        const details = encodeURIComponent('Join us to celebrate our wedding!');
-        const location = encodeURIComponent('Avalon Hall & Restaurant, Armenia');
-        const start = '20260620';  // Changed - all day format (YYYYMMDD)
-        const end = '20260621';    // Changed - end date is next day for all-day events
-
-        const googleUrl =
-            `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}` +
-            `&dates=${start}/${end}&details=${details}&location=${location}`;
-
-        window.open(googleUrl, '_blank');
-    });
-}
-
-/* ---------------------------
-   ICS DOWNLOAD BUTTON
----------------------------- */
-const icsBtn = document.getElementById('icsCalendarBtn');
-if (icsBtn) {
-    icsBtn.addEventListener('click', () => {
-        const icsContent =
-            `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\n` +
-            `DTSTART;VALUE=DATE:20260620\n` +  // Changed - date-only format for all-day
-            `DTEND;VALUE=DATE:20260621\n` +    // Changed - next day for all-day events
-            `SUMMARY:Jordan & Kristina Wedding\n` +
-            `DESCRIPTION:Join us to celebrate our wedding!\n` +
-            `LOCATION:Avalon Hall & Restaurant, Armenia\n` +
-            `END:VEVENT\nEND:VCALENDAR`;
-
-        const blob = new Blob([icsContent], { type: 'text/calendar' });
-        const url = URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'wedding-event.ics';
-        a.click();
-
-        URL.revokeObjectURL(url);
-    });
-}
-
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        preloader.style.opacity = '0';
-        setTimeout(() => preloader.remove(), 1000);
-    }, 2000);
-});
-
-const heroImage = document.getElementById('heroImage');
-const heroContent = document.getElementById('heroContent');
-const scrollHint = document.getElementById('scrollHint');
-const hero = document.querySelector('.hero');
-const body = document.body;
-
-heroImage.addEventListener('click', () => {
-    heroImage.classList.add('opened');
-    hero.classList.add('bg-visible');
-
-    // Hide all text elements
-    document.querySelector('.hero-invitation-text').style.display = 'none';
-    document.querySelector('.hero-initials').style.display = 'none';
-    document.querySelector('.hero-click-text').style.display = 'none';
-
-    setTimeout(() => {
-        heroImage.style.display = 'none';
-        heroContent.style.display = 'block';
-        scrollHint.style.display = 'block';
-        body.classList.remove('no-scroll');
-    }, 1600);
-});
-
-const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.program-item, .date-section, .location-section, .gallery-section, .dresscode-section, .rsvp-section, .contact-section')
-    .forEach(item => observer.observe(item));
-
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-window.addEventListener('message', function(e) {
-  if (typeof e?.data === 'string') {
-
-    if (e.data.includes('Tally.FormSubmitted')) {
-      console.log("Tally form submitted!");
-
-      const refreshMessage = document.getElementById('refreshMessage');
-      if (refreshMessage) {
-        refreshMessage.style.opacity = '1';
+  // ============================================
+  // TRANSLATIONS OBJECT
+  // ============================================
+  const translations = {
+    en: {
+      hero: {
+        invitation: "Wedding Invitation",
+        clickText: "Click on the picture to open the invite",
+        subtitle: "WEDDING DAY",
+        scrollDown: "SCROLL DOWN"
+      },
+      date: {
+        intro: "A moment we're excited to share",
+        message: "We're looking forward to celebrating with you!",
+        googleCalendar: "Save to Google Calendar",
+        iphoneCalendar: "Save to iPhone Calendar"
+      },
+      location: {
+        title: "LOCATION",
+        maps: "Show on Google Maps"
+      },
+      program: {
+        title: "WEDDING PROGRAMME",
+        arrival: "GUEST ARRIVAL TIME",
+        ceremony: "CEREMONY",
+        welcome: "WELCOME",
+        dinner: "WEDDING DINNER",
+        cake: "CAKE",
+        finale: "FINALE"
+      },
+      dresscode: {
+        title: "DRESS CODE",
+        text: "We ask you to wear formal or semi-formal attire. While theme colours are welcome, feel free to wear any colours you love!"
+      },
+      palette: {
+        title: "PRELIMINARY COLOUR PALETTE"
+      },
+      rsvp: {
+        description: "Please confirm your attendance by 1st April 2026",
+        resubmitText: "If you're attending with others, please submit<br>one RSVP per person. You can resubmit here:",
+        resubmitButton: "Submit a new RSVP"
+      }
+    },
+    ru: {
+      hero: {
+        invitation: "Свадебное Приглашение",
+        clickText: "Нажмите на картинку, чтобы открыть приглашение",
+        subtitle: "ДЕНЬ СВАДЬБЫ",
+        scrollDown: "ПРОКРУТИТЕ ВНИЗ"
+      },
+      date: {
+        intro: "Момент, которым мы рады поделиться",
+        message: "С нетерпением ждём встречи с вами!",
+        googleCalendar: "Сохранить в Google Календарь",
+        iphoneCalendar: "Сохранить в Календарь iPhone"
+      },
+      location: {
+        title: "МЕСТО ПРОВЕДЕНИЯ",
+        maps: "Показать на Google Картах"
+      },
+      program: {
+        title: "ПРОГРАММА СВАДЬБЫ",
+        arrival: "ВРЕМЯ ПРИБЫТИЯ ГОСТЕЙ",
+        ceremony: "ЦЕРЕМОНИЯ",
+        welcome: "ПРИВЕТСТВИЕ",
+        dinner: "СВАДЕБНЫЙ УЖИН",
+        cake: "ТОРТ",
+        finale: "ФИНАЛ"
+      },
+      dresscode: {
+        title: "ДРЕСС-КОД",
+        text: "Просим вас надеть официальную или полуофициальную одежду. Приветствуются тематические цвета, но вы можете выбрать любые цвета, которые вам нравятся!"
+      },
+      palette: {
+        title: "ПРЕДВАРИТЕЛЬНАЯ ЦВЕТОВАЯ ПАЛИТРА"
+      },
+      rsvp: {
+        description: "Пожалуйста, подтвердите своё присутствие до 1 апреля 2026 года",
+        resubmitText: "Если вы приходите с другими, пожалуйста, отправьте<br>одну анкету на человека. Вы можете отправить здесь:",
+        resubmitButton: "Отправить новую анкету"
+      }
+    },
+    hy: {
+      hero: {
+        invitation: "Հարսանյաց Հրավեր",
+        clickText: "Սեղմեք նկարի վրա՝ հրավերը բացելու համար",
+        subtitle: "ՀԱՐՍԱՆԻՔԻ ՕՐ",
+        scrollDown: "ՈԼՈՐԵՔ ՆԵՐՔԵՒ"
+      },
+      date: {
+        intro: "Պահ, որը ուզում ենք կիսել ձեզ հետ",
+        message: "Անհամբեր սպասում ենք տոնելու ձեզ հետ!",
+        googleCalendar: "Պահպանել Google Օրացույցում",
+        iphoneCalendar: "Պահպանել iPhone Օրացույցում"
+      },
+      location: {
+        title: "ՎԱՅՐ",
+        maps: "Ցույց տալ Google Քարտեզներում"
+      },
+      program: {
+        title: "ՀԱՐՍԱՆԻՔԻ ԾՐԱԳԻՐ",
+        arrival: "ՀՅՈՒՐԵՐԻ ԺԱՄԱՆՄԱՆ ԺԱՄԱՆԱԿ",
+        ceremony: "ԱՐԱՐՈՂՈՒԹՅՈՒՆ",
+        welcome: "ՈՂՋՈՒՅՆ",
+        dinner: "ՀԱՐՍԱՆԵԿԱՆ ԸՆԹՐԻՔ",
+        cake: "ՏՈՐԹ",
+        finale: "ԱՎԱՐՏ"
+      },
+      dresscode: {
+        title: "ՀԱԳՈՒՍՏԻ ԿՈԴ",
+        text: "Խնդրում ենք հագնել պաշտոնական կամ կիսապաշտոնական հագուստ։ Թեմատիկ գույները ողջունելի են, բայց ազատ զգացեք հագնել ցանկացած գույներ, որոնք սիրում եք!"
+      },
+      palette: {
+        title: "ՆԱԽՆԱԿԱՆ ԳՈՒՆԱՅԻՆ ՊԱԼԻՏՐԱ"
+      },
+      rsvp: {
+        description: "Խնդրում ենք հաստատել ձեր ներկայությունը մինչև 2026 թվականի ապրիլի 1-ը",
+        resubmitText: "Եթե գալիս եք ուրիշների հետ, խնդրում ենք ներկայացնել<br>մեկ RSVP մեկ անձի համար։ Կարող եք կրկին ներկայացնել այստեղ:",
+        resubmitButton: "Ներկայացնել նոր RSVP"
       }
     }
-  }
-});
-// Grab the refresh button and iframe
-const refreshBtn = document.getElementById('refreshRSVPBtn');
-const rsvpIframe = document.getElementById('rsvpIframe');
-const refreshMessage = document.getElementById('refreshMessage');
+  };
 
-// Click handler for the resubmit button
-refreshBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent bubbling
+  // ============================================
+  // LANGUAGE SWITCHING FUNCTION
+  // ============================================
+  function setLanguage(lang) {
+    // Save to localStorage
+    localStorage.setItem('wedding-language', lang);
 
-    // Hide the button
-    if (refreshMessage) {
-        refreshMessage.style.opacity = '0';
-    }
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.dataset.lang === lang) {
+        btn.classList.add('active');
+      }
+    });
 
-    // Reload the iframe to reset the form
-    if (rsvpIframe) {
-        const src = rsvpIframe.src;
-        rsvpIframe.src = ''; // Force reload
-        setTimeout(() => {
-            rsvpIframe.src = src;
-        }, 50);
-    }
-});
+    // Update all translatable elements
+    document.querySelectorAll('[data-translate]').forEach(element => {
+      const key = element.dataset.translate;
+      const keys = key.split('.');
+      let translation = translations[lang];
 
-// Show the resubmit button after Tally form submission
-window.addEventListener('message', function(e) {
-    if (typeof e?.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
-        if (refreshMessage) {
-            refreshMessage.style.opacity = '1';
+      // Navigate through nested object
+      for (let k of keys) {
+        translation = translation[k];
+      }
 
-            // Optional: move it to the “floating” position
-            refreshMessage.style.position = 'absolute';
-            refreshMessage.style.bottom = '20px';
-            refreshMessage.style.left = '50%';
-            refreshMessage.style.transform = 'translateX(-50%)';
-            refreshMessage.style.zIndex = '9999';
+      if (translation) {
+        // Handle HTML content (for line breaks)
+        if (translation.includes('<br>')) {
+          element.innerHTML = translation;
+        } else {
+          element.textContent = translation;
         }
+      }
+    });
+  }
+
+  // ============================================
+  // INITIALIZE LANGUAGE ON PAGE LOAD
+  // ============================================
+  window.addEventListener('load', () => {
+    // Get saved language or default to English
+    const savedLang = localStorage.getItem('wedding-language') || 'en';
+    setLanguage(savedLang);
+
+    // Add click listeners to language buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+  });
+
+  // ============================================
+  // PRELOADER
+  // ============================================
+  window.addEventListener('load', () => {
+      setTimeout(() => {
+          const preloader = document.getElementById('preloader');
+          preloader.style.opacity = '0';
+          setTimeout(() => preloader.remove(), 1000);
+      }, 2000);
+  });
+
+  // ============================================
+  // HERO IMAGE CLICK & ANIMATION
+  // ============================================
+  const heroImage = document.getElementById('heroImage');
+  const heroContent = document.getElementById('heroContent');
+  const scrollHint = document.getElementById('scrollHint');
+  const hero = document.querySelector('.hero');
+  const body = document.body;
+
+  heroImage.addEventListener('click', () => {
+      heroImage.classList.add('opened');
+      hero.classList.add('bg-visible');
+
+      // Hide all text elements and language selector
+      document.querySelector('.hero-invitation-text').style.display = 'none';
+      document.querySelector('.hero-initials').style.display = 'none';
+      document.querySelector('.hero-click-text').style.display = 'none';
+      document.querySelector('.language-selector').style.display = 'none';
+
+      setTimeout(() => {
+          heroImage.style.display = 'none';
+          heroContent.style.display = 'block';
+          scrollHint.style.display = 'block';
+          body.classList.remove('no-scroll');
+      }, 1600);
+  });
+
+  // ============================================
+  // INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
+  // ============================================
+  const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+          }
+      });
+  }, observerOptions);
+
+  document.querySelectorAll('.program-item, .date-section, .location-section, .gallery-section, .dresscode-section, .rsvp-section, .contact-section')
+      .forEach(item => observer.observe(item));
+
+  // ============================================
+  // SMOOTH SCROLL FOR ANCHOR LINKS
+  // ============================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+  });
+
+  // ============================================
+  // GOOGLE CALENDAR BUTTON
+  // ============================================
+  const googleBtn = document.getElementById('googleCalendarBtn');
+  if (googleBtn) {
+      googleBtn.addEventListener('click', () => {
+          const title = encodeURIComponent('Jordan & Kristina Wedding');
+          const details = encodeURIComponent('Join us to celebrate our wedding!');
+          const location = encodeURIComponent('Avalon Hall & Restaurant, Armenia');
+          const start = '20260620';
+          const end = '20260621';
+
+          const googleUrl =
+              `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}` +
+              `&dates=${start}/${end}&details=${details}&location=${location}`;
+
+          window.open(googleUrl, '_blank');
+      });
+  }
+
+  // ============================================
+  // ICS DOWNLOAD BUTTON
+  // ============================================
+  const icsBtn = document.getElementById('icsCalendarBtn');
+  if (icsBtn) {
+      icsBtn.addEventListener('click', () => {
+          const icsContent =
+              `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\n` +
+              `DTSTART;VALUE=DATE:20260620\n` +
+              `DTEND;VALUE=DATE:20260621\n` +
+              `SUMMARY:Jordan & Kristina Wedding\n` +
+              `DESCRIPTION:Join us to celebrate our wedding!\n` +
+              `LOCATION:Avalon Hall & Restaurant, Armenia\n` +
+              `END:VEVENT\nEND:VCALENDAR`;
+
+          const blob = new Blob([icsContent], { type: 'text/calendar' });
+          const url = URL.createObjectURL(blob);
+
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'wedding-event.ics';
+          a.click();
+
+          URL.revokeObjectURL(url);
+      });
+  }
+
+  // ============================================
+  // TALLY FORM SUBMISSION HANDLER
+  // ============================================
+  window.addEventListener('message', function(e) {
+    if (typeof e?.data === 'string') {
+      if (e.data.includes('Tally.FormSubmitted')) {
+        console.log("Tally form submitted!");
+
+        const refreshMessage = document.getElementById('refreshMessage');
+        if (refreshMessage) {
+          refreshMessage.style.opacity = '1';
+        }
+      }
     }
-});
+  });
 
+  // ============================================
+  // RSVP REFRESH BUTTON
+  // ============================================
+  const refreshBtn = document.getElementById('refreshRSVPBtn');
+  const rsvpIframe = document.getElementById('rsvpIframe');
+  const refreshMessage = document.getElementById('refreshMessage');
 
+  refreshBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
 
+      if (refreshMessage) {
+          refreshMessage.style.opacity = '0';
+      }
+
+      if (rsvpIframe) {
+          const src = rsvpIframe.src;
+          rsvpIframe.src = '';
+          setTimeout(() => {
+              rsvpIframe.src = src;
+          }, 50);
+      }
+  });
 </script>
+
 <footer class="footer-section" style="
     padding: 40px 20px;
     text-align: center;
