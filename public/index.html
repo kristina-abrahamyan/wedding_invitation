@@ -770,18 +770,18 @@
         }
     }
     #refreshMessage {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
+      position: fixed !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      z-index: 99999999 !important;
       width: 90%;
       max-width: 500px;
       display: none;
     }
 
     #refreshMessage.show {
-      display: block;
+      display: block !important;
     }
 
     #refreshMessage > div {
@@ -1328,6 +1328,15 @@ window.addEventListener('message', function(e) {
 
       // Show the message
       refreshMessage.classList.add('show');
+
+      // Scroll the message into view smoothly after a brief delay
+      setTimeout(() => {
+        refreshMessage.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'center'
+        });
+      }, 100);
 
       // Add click handler to the newly created button
       const refreshBtn = document.getElementById('refreshRSVPBtn');
