@@ -90,7 +90,7 @@
     }
 
     .hero.bg-visible::before {
-        opacity: 0.6;
+        opacity: 1;
     }
 
     .hero::after {
@@ -189,9 +189,10 @@
 
     .hero-content {
         text-align: center;
-        color: #5a6b4d;
+        color: #ffffff;
         z-index: 10;
         position: relative;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     }
 
     .hero-overlay {
@@ -239,6 +240,11 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
+        color: #ffffff;
+        text-shadow:
+            2px 2px 0px #000,
+            4px 4px 4px #000,
+            6px 6px 8px #000;
     }
 
     .hero-title span {
@@ -248,7 +254,7 @@
     .hero-title .amp {
         font-size: 50px;
         font-weight: normal;
-        color: #5a6b4d;
+        color: #ffffff;
     }
 
     .hero-subtitle {
@@ -258,6 +264,11 @@
         opacity: 0;
         animation: fadeInUp 1s ease forwards;
         animation-delay: 0.7s;
+        color: #ffffff;
+        text-shadow:
+            2px 2px 0px #000,
+            4px 4px 4px #000,
+            6px 6px 8px #000;
     }
 
     .hero-date {
@@ -266,6 +277,11 @@
         opacity: 0;
         animation: fadeInUp 1s ease forwards;
         animation-delay: 0.9s;
+        color: #ffffff;
+        text-shadow:
+            2px 2px 0px #000,
+            4px 4px 4px #000,
+            6px 6px 8px #000;
     }
 
     .scroll-hint {
@@ -274,21 +290,28 @@
         left: 50%;
         transform: translateX(-50%);
         font-weight: bold;
-        color: #4a5b41; /* slightly darker green */
+        color: #ffffff;
         font-size: 10px;
         opacity: 0;
         animation: fadeIn 1s ease forwards, bounce 2s infinite;
         animation-delay: 1.5s;
         z-index: 10;
-        text-shadow: none; /* no shadow */
+        text-shadow:
+            2px 2px 0px #000,
+            4px 4px 4px #000,
+            6px 6px 8px #000;
     }
 
     .scroll-arrow {
         width: 1px;
         height: 30px;
-        background: rgba(90, 107, 77, 0.4);
+        background: rgba(255, 255, 255, 0.8);
         margin: 0 auto 10px;
         position: relative;
+        text-shadow:
+            2px 2px 0px #000,
+            4px 4px 4px #000,
+            6px 6px 8px #000;
     }
 
     .scroll-arrow::after {
@@ -298,7 +321,7 @@
         left: -2px;
         width: 5px;
         height: 1px;
-        background: #5a6b4d;
+        background: #ffffff;
     }
 
     @keyframes fadeInUp {
@@ -346,7 +369,7 @@
         font-size: 38px;
         font-weight: 700;
         margin: 20px 0;
-        color: #5a6b4d;
+        color: #000000; /* changed from #5a6b4d to black */
         font-family: 'Trebuchet MS', 'Lucida Sans', sans-serif;
         letter-spacing: 2px;
         word-spacing: 12px;
@@ -395,7 +418,7 @@
         font-size: 48px;
         font-weight: 700;
         margin-bottom: 30px;
-        color: #5a6b4d;
+        color: #000000; /* changed from #5a6b4d to black */
     }
 
     .location-details {
@@ -432,7 +455,7 @@
         font-weight: 700;
         text-align: center;
         margin-bottom: 60px;
-        color: #5a6b4d;
+        color: #000000; /* changed from #5a6b4d to black */
     }
 
     .program-item {
@@ -526,7 +549,7 @@
         font-size: 48px;
         font-weight: 700;
         margin-bottom: 30px;
-        color: #5a6b4d;
+        color: #000000; /* changed from #5a6b4d to black */
     }
 
     .dresscode-text {
@@ -556,7 +579,7 @@
         font-size: 48px;
         font-weight: 700;
         margin-bottom: 30px;
-        color: #5a6b4d;
+        color: #000000; /* changed from #5a6b4d to black */
     }
 
     .rsvp-section {
@@ -579,7 +602,7 @@
         font-weight: 700;
         text-align: center;
         margin-bottom: 20px;
-        color: #5a6b4d;
+        color: #000000; /* changed from #5a6b4d to black */
     }
 
     .rsvp-description {
