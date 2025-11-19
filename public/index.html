@@ -758,14 +758,6 @@
             margin-top: -30px;
             margin-bottom: 30px;
         }
-        #refreshMessage {
-          width: 95%;
-        }
-
-        #refreshMessage > div {
-          padding: 40px 20px;
-          background: rgb(0,0,0);
-        }
     }
     .rsvp-container iframe {
             width: 100%;
@@ -778,28 +770,40 @@
         }
     }
     #refreshMessage {
-      position: fixed !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) !important;
-      z-index: 99999999 !important;
+      position: fixed;
+      top: 48.5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999999;
       width: 90%;
       max-width: 500px;
       display: none;
     }
 
     #refreshMessage.show {
-      display: block !important;
+      display: block;
     }
 
     #refreshMessage > div {
-      padding: 30px 28px;
+      padding: 45px 28px;
       background: rgba(0,0,0,0.98);
       color: #fff;
       border-radius: 12px;
       font-size: 16px;
       line-height: 1.5;
       text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      #refreshMessage {
+        width: 95%;
+        top: 56%;
+      }
+
+      #refreshMessage > div {
+        padding: 55px 20px;
+        background: rgb(0,0,0);
+      }
     }
 
   </style>
