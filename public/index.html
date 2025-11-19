@@ -460,8 +460,8 @@
 
     .program-item {
         max-width: 800px;
-        margin: 30px auto;
-        padding: 20px 0;
+        margin: 15px auto;
+        padding: 15px 0;
         border-top: 1px solid #d4d9ce;
         display: flex;
         align-items: center;
@@ -709,6 +709,15 @@
         margin-bottom: 40px;
     }
 
+    .colourpalette-subtitle {
+        text-align: center;
+        font-size: 18px;
+        font-style: italic;
+        color: #7a8970;
+        margin-top: 10px;
+        margin-bottom: 40px;
+    }
+
     @media (max-width: 768px) {
         .language-selector {
             top: 10px;
@@ -801,6 +810,11 @@
         .program-subtitle {
             font-size: 16px;
             margin-top: -30px;
+            margin-bottom: 30px;
+        }
+        .colourpalette-subtitle {
+            font-size: 16px;
+            margin-top: 5px;
             margin-bottom: 30px;
         }
         /* Add this new rule for better text wrapping on mobile */
@@ -969,10 +983,10 @@
     <div class="program-time">15:45</div>
     <div class="program-description" data-translate="program.receptionDrinks">RECEPTION DRINKS & PHOTOS</div>
   </div>
-  <div class="program-item">
-    <div class="program-time">16:45</div>
-    <div class="program-description" data-translate="program.guestsSeats">GUESTS TAKE SEATS</div>
-  </div>
+<!--  <div class="program-item">-->
+<!--    <div class="program-time">16:45</div>-->
+<!--    <div class="program-description" data-translate="program.guestsSeats">GUESTS TAKE SEATS</div>-->
+<!--  </div>-->
 <!--  <div class="program-item">-->
 <!--    <div class="program-time">17:00</div>-->
 <!--    <div class="program-description" data-translate="program.coupleEnters">COUPLE ENTERS</div>-->
@@ -1016,7 +1030,8 @@
 </section>
 
 <section class="gallery-section">
-  <h2 class="colourpalette-title" data-translate="palette.title">PRELIMINARY COLOUR PALETTE</h2>
+  <h2 class="colourpalette-title" data-translate="palette.title">COLOUR PALETTE</h2>
+  <p class="colourpalette-subtitle" data-translate="palette.subtitle">Subject to change</p>
   <div class="gallery-grid">
     <div class="gallery-item">
       <img src="images/green.jpeg" alt="Gallery 1">
@@ -1096,7 +1111,8 @@
         text: "We ask you to wear formal or semi-formal attire. While theme colours are welcome, feel free to wear any colours you love!"
       },
       palette: {
-        title: "PRELIMINARY COLOUR PALETTE"
+        title: "COLOUR PALETTE",
+        subtitle: "Subject to change"
       },
       rsvp: {
         title: "RSVP",
@@ -1146,7 +1162,8 @@
         text: "Просим вас надеть официальную или полуофициальную одежду. Приветствуются тематические цвета, но вы можете выбрать любые цвета, которые вам нравятся!"
       },
       palette: {
-        title: "ПРЕДВАРИТЕЛЬНАЯ ЦВЕТОВАЯ ПАЛИТРА"
+        title: "ЦВЕТОВАЯ ПАЛИТРА",
+        subtitle: "Возможны изменения"
       },
       rsvp: {
         title: "Анкета",
@@ -1196,7 +1213,8 @@
         text: "Խնդրում ենք հագնել պաշտոնական կամ կիսապաշտոնական հագուստ։ Թեմատիկ գույները ողջունելի են, բայց ազատ զգացեք հագնել ցանկացած գույներ, որոնք սիրում եք!"
       },
       palette: {
-        title: "ՆԱԽՆԱԿԱՆ ԳՈՒՆԱՅԻՆ ՊԱԼԻՏՐԱ"
+        title: "ԳՈՒՆԱՅԻՆ ՊԱԼԻՏՐԱ",
+        subtitle: "Կարող են լինել փոփոխություններ"
       },
       rsvp: {
         title: "Հարցաթերթիկ",
